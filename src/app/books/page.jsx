@@ -2,15 +2,15 @@ import { getAllBooks, getAllCategories } from "@/services/book/bookServices";
 import FilterBookList from "./_components/FilterBookList";
 
 const page = async ({ searchParams }) => {
-  const { query } = await searchParams;
+  const { search } = await searchParams;
   const books = await getAllBooks();
   // console.log("hello", books);
   const bookCategories = await getAllCategories();
   console.log(books);
   let filterSearchBook = books;
-  if (query) {
+  if (search) {
     filterSearchBook = books.filter((book) =>
-      book.book_title.toLowerCase().includes(query.toLowerCase())
+      book.book_title.toLowerCase().includes(search.toLowerCase())
     );
   }
   return (

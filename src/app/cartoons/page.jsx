@@ -5,14 +5,14 @@ import {
 import FilterableCartoonList from "./_components/FilterableCartoonList";
 
 const Page = async ({ searchParams }) => {
-  const { query } = searchParams;
+  const { search } = searchParams;
   const cartoons = await getAllCartoons();
   const cartoonsGenre = await getAllCartoonGenre();
 
   let filterSearchCartoons = cartoons;
-  if (query) {
+  if (search) {
     filterSearchCartoons = cartoons.filter((cartoon) =>
-      cartoon.ct_title.toLowerCase().includes(query.toLowerCase())
+      cartoon.ct_title.toLowerCase().includes(search.toLowerCase())
     );
   }
   return (
