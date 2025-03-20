@@ -7,7 +7,7 @@ const BookDetails = ({ description }) => {
   return (
     <div className="p-6">
       {/* Tab Navigation */}
-      <div className="flex space-x-4  pb-2">
+      <div className="flex space-x-4 pb-2">
         <button
           onClick={() => setActiveTab("synopsis")}
           className={`px-4 py-2 ${
@@ -31,7 +31,7 @@ const BookDetails = ({ description }) => {
       </div>
 
       {/* Tab Content */}
-      <div className="mt-4 overflow-y-auto max-h-[35vh]">
+      <div className="mt-4 overflow-y-auto max-h-[35vh] w-full">
         {activeTab === "synopsis" && <p>{description}</p>}
         {activeTab === "table" && (
           <ul className="">

@@ -23,19 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${outfit.variable} ${calistoga.variable} light`}>
         <div className="flex bg-gray-100">
-          <SidebarProvider>
-            <AppSidebar />
-            <main className="flex-1 p-6">
-              <div className="flex items-center justify-between gap-5 mb-3">
-                <div className="flex items-center justify-between gap-5">
-                  <SidebarTrigger className={"cursor-pointer"} />
-                </div>
-                <Search />
-              </div>
-              <hr className="border border-gray-200 my-3" />
-              {children}
-            </main>
-          </SidebarProvider>
+          {children}
         </div>
       </body>
     </html>

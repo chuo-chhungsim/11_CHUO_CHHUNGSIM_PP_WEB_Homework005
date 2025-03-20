@@ -1,3 +1,4 @@
+import { getBookById } from "@/services/book/bookServices";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,16 +8,15 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Book, Eye, Plus, Star } from "lucide-react";
-import BookDetails from "./_components/BookDetails";
-import { getCartoonById } from "@/services/cartoons/cartoonService";
+import Synposis from "./_components/BookDetails";
 
-const Page = async ({ params }) => {
-  const { id } = await params;
-  const cartoon = await getCartoonById(id);
-  console.log("cartoon by id", cartoon);
+const page = async ({ params }) => {
+  const { id } = params;
+  const book = await getBookById(id);
+  console.log("Book by id", book);
 
   return (
-    <div className="">
+    <div className="h-screen mx-auto px-30 py-3">
       <Breadcrumb>
         <BreadcrumbList className={"text-xl font-semibold my-5"}>
           <BreadcrumbItem>
@@ -24,62 +24,57 @@ const Page = async ({ params }) => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/cartoons">Cartoon Categories</BreadcrumbLink>
+            <BreadcrumbLink href="/books">Book Categories</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{cartoon.ct_title}</BreadcrumbPage>
+            <BreadcrumbPage>{book.book_title}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-
-      <div className="flex flex-row">
+      <div className="flex flex-row ">
         {/* Book Cover */}
         <div className="relative w-1/3 h-[75vh] flex-shrink-0 overflow-hidden">
           <img
-            key={cartoon.id}
-            src={cartoon.image}
-            alt={cartoon.ct_title}
-            className="w-full h-full object-fill"
+            src={book.image}
+            alt={book.book_title}
+            className="w-full h-full object-fill rounded-lg"
           />
         </div>
 
-        {/* Cartoon Information */}
+        {/* Novel Information */}
         <div className="flex-1 p-8 space-y-2">
           {/* Title */}
           <h2 className="text-4xl font-bold text-gray-800">
-            {cartoon.ct_title}
+            {book.book_title}
           </h2>
 
           {/* Author */}
           <div className="text-gray-600">
             Author:
             <a href="#" className="text-blue-500 hover:underline">
-              {cartoon.ct_creator}
+              {book.book_author}
             </a>
           </div>
-
-          {/* Views */}
           <div className="text-gray-600 flex gap-1">
             <Eye /> :
-            <span className="text-gray-800">
-              {cartoon.view_count || "No views"} views
+            <span className="text-gray-800 ">
+              {book.book_views || " no views"}
+            </span>
+          </div>
+          <div className="text-gray-600 flex gap-1">
+            <Book /> :
+            <span className="text-gray-800 ">
+              {book.book_views || " no chapters available"}
+            </span>
+          </div>
+          <div className="text-gray-600 flex gap-1">
+            <Star fill="gold" stroke="0" /> :
+            <span className="text-gray-800 ">
+              {book.book_views || " (No rating)"}
             </span>
           </div>
 
-          {/* No Chapters Available */}
-          <div className="text-gray-600 flex gap-1">
-            <Book /> :
-            <span className="text-gray-800">No chapters available</span>
-          </div>
-
-          {/* Rating */}
-          <div className="text-gray-600 flex gap-1">
-            <Star fill="gold" stroke="0" /> :
-            <span className="text-gray-800">(No rating)</span>
-          </div>
-
-          {/* Buttons */}
           <div className="flex gap-5">
             <button
               disabled
@@ -97,9 +92,8 @@ const Page = async ({ params }) => {
           </div>
 
           <hr />
-          {/* Book Details Component */}
-          <div className="text-gray-800 text-base">
-            <BookDetails description={cartoon.ct_description} />
+          <div className="text-gray-800 text-base ">
+            <Synposis description={book.description} />
           </div>
         </div>
       </div>
@@ -107,4 +101,4 @@ const Page = async ({ params }) => {
   );
 };
 
-export default Page;
+export default page;

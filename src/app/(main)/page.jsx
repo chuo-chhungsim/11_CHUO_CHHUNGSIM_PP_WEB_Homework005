@@ -12,7 +12,7 @@ export default function page() {
           <ImageCard
             title={"Book"}
             description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              "Discover a wide range of books that ignite your imagination and broaden your knowledge. Find your next great read!"
             }
             image={
               "https://assets.designhill.com/design-blog/wp-content/uploads/2018/05/Bold-Typography.jpg"
@@ -23,7 +23,7 @@ export default function page() {
           <ImageCard
             title={"Cartoon"}
             description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              "Dive into a colorful world of cartoons with characters, stories, and fun that entertain both kids and adults alike!"
             }
             image={
               "https://i.pinimg.com/736x/16/3d/b0/163db0a5935fc109245cda579ccd6c12.jpg"

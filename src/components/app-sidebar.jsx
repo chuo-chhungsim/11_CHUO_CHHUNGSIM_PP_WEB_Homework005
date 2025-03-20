@@ -33,12 +33,12 @@ const items = [
   },
   {
     title: "Moives & TV Shows",
-    url: "/moives",
+    url: "#",
     icon: MonitorPlay,
   },
   {
     title: "Music",
-    url: "/music",
+    url: "#",
     icon: Music,
   },
 ];
@@ -76,7 +76,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <a href={item.url} className="gap-1">
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
